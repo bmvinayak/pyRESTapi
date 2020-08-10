@@ -11,7 +11,7 @@ from resources.item import Item, Items
 from resources.store import Store, Stores
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///data.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'abcxyz'
 app.config['JWT_EXPIRATION_DELTA'] = datetime.timedelta(minutes=30)
