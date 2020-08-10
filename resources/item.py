@@ -52,6 +52,11 @@ class Item(Resource):
     @jwt_required()
     def put(self):
         request_data = Item.parser.parse_args()
+        store = StoreModel.find_by_id(request_data['store_id'])
+
+        if store is None:
+            return {"message": "Store with id '{}' does not exist.".format(request_data['store_id'])}, 400
+
         item = ItemModel.find_by_name(
             request_data['name'], request_data['store_id'])
 
